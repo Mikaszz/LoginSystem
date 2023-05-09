@@ -1,0 +1,90 @@
+<?php
+
+// check if form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+  // get email from form data
+  $email = $_POST['email'];
+
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+  echo "Connected successfully";
+  
+
+  // check if email exists in database
+  $query = "SELECT * FROM users WHERE email='$email'";
+  $result = mysqli_query($conn, $query);
+  $user = mysqli_fetch_assoc($result);
+
+  if ($user) {
+    // generate new password
+    $new_password = generate_random_password();
+    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+    // update user's password in database
+    $query = "UPDATE users SET password='$hashed_password' WHERE email='$email'";
+    mysqli_query($conn, $query);
+
+    // send new password to user's email address
+    $to = $email;
+    $subject = "Password recovery";
+    $message = "Your new password is: $new_password";
+    $headers = "From: webmaster@example.com";
+    mail($to, $subject, $message, $headers);
+
+    // redirect user to success page
+    header("Location: ../html/login.php");
+    exit();
+
+  } else {
+    // email address not found in database
+    $error = "Email not found";
+  }
+
+  mysqli_close($conn);
+}
+
+// function to generate random password
+function generate_random_password() {
+  $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  $password = '';
+  for ($i = 0; $i < 8; $i++) {
+    $password .= $chars[rand(0, strlen($chars) - 1)];
+  }
+  return $password;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/recovery.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
+<title>Password recovery</title>
+</head>
+<body>
+  <div id="SignIn-form">
+    <?php if (isset($error)) { ?>
+      <p class="error"><?php echo $error ?></p>
+    <?php } ?>
+    <h2>Recovery</h2>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="off">
+      </div>
+      <p>Remember password? <a href="login.php">Sign in</a></p>
+      <input type="submit" name="submit" value="Recover">
+    </form>
+  </div>
+</body>
+</html>
+

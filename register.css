@@ -1,0 +1,171 @@
+body {
+    background-image: url('../img/metal.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+#SignUp-form {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    border-radius: 5px;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
+    height: 550px;
+    width: 350px;
+    margin: 0 auto;
+    margin-top: calc(50vh - 275px);
+    padding: 20px;
+    position: relative;
+}
+
+#SignUp-form p {
+    color: #fff;
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+    margin-top: 30px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    }
+
+#SignUp-form h2 {
+    color: #fff;
+    font-family: 'Abel', sans-serif;
+    font-size: 30px;
+    margin: 0 0 50px;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+input {
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    box-sizing: border-box;
+    color: #fff;
+    display: block;
+    font-family: 'Abel', sans-serif;
+    font-size: 1.9em;
+    margin: 0 0 20px;
+    outline: none;
+    padding: 5px;
+    width: 100%;
+}
+
+label {
+    color: #fff;
+    font-family: 'Abel', sans-serif;
+    font-size: 16px;
+    position: absolute;
+    top: -10px;
+    left: 5px;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus + label {
+    font-size: 12px;
+    top: -25px;
+}
+
+input[type="submit"] {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.2);
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: 'Abel', sans-serif;
+    font-size: 2em;
+    line-height: 1.6em;
+    margin: 30px auto 0;
+    outline: none;
+    padding: 10px 20px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.4);
+    transform: translateY(1px);
+    }
+    
+    input[type="submit"]:active {
+    box-shadow: none;
+    transform: translateY(3px);
+    }
+    
+    #form-message {
+    color: #fff;
+    font-family: 'Abel', sans-serif;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    
+    .password-recovery {
+    color: #fff;
+    display: block;
+    font-family: 'Abel', sans-serif;
+    font-size: 14px;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    
+    .password-recovery:hover {
+    text-decoration: underline;
+    }
+    
+    #LOGIN {
+    color: #fff;
+    font-family: 'Abel', sans-serif;
+    text-decoration: underline;
+    transition: all 0.2s ease-in-out;
+    }
+    
+    #LOGIN:hover {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    
+    .form-group {
+    position: relative;
+    margin-bottom: 50px;
+    }
+
+    .register-link {
+        color: #fff;
+        display: block;
+        font-family: 'Abel', sans-serif;
+        font-size: 14px;
+        margin-top: 20px;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    
+    .register-link:hover {
+        text-decoration: underline;
+    }
+    
+    .additional-input {
+        margin-bottom: 25px;
+    }
+    
+    @media screen and (max-width: 480px) {
+        #SignUp-form {
+            height: auto;
+            margin-top: 20px;
+            width: 90%;
+        }
+    }
+    
